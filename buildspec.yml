@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      golang: 1.20
+    commands:
+      - go get -v "github.com/aws/aws-lambda-go/lambda"
+      - go get -v "github.com/aws/aws-lambda-go/lambdacontext"
+
+  build:
+    commands:
+      - GOOS=linux GOARCH=amd64 go build -o main cmd/main.go
+
+artifacts:
+  files:
+    - main
+    - buildspec.yml
+    - appspec.yml
+  name:
+    fibonacci-artifact.zip
