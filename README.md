@@ -4,23 +4,38 @@ This is a sample AWS Lambda function written in Golang which uses AWS API Gatewa
 
 ```
 ├── Dockerfile
+├── Jenkinsfile
 ├── Makefile
 ├── README.md
+├── appspec.yml
+├── buildspec.yml
 ├── cmd
-│   ├── main.go
-│   └── main_test.go
+│   ├── main.go
+│   └── main_test.go
+├── codecommit
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── terraform.tfstate
+│   ├── terraform.tfstate.backup
+│   ├── terraform.tfvars
+│   └── variables.tf
 ├── coverage.txt
 ├── go.mod
 ├── go.sum
 └── infrastructure
+    ├── README.md
     ├── apigw.tf
     ├── main.tf
     ├── outputs.tf
     ├── terraform.tf
+    ├── terraform.tfstate
+    ├── terraform.tfstate.backup
     └── variables.tf
+
 ```
 
-
+## Usage
+Once the infrastructure has been created, the Rest API endpoint can be invoked as follows:
 ```
 curl -X POST https://qz4tp1ohjj.execute-api.us-east-2.amazonaws.com/dev/main -d '{"base": 12}'
 
